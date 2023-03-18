@@ -1,2 +1,3 @@
-# firecrest
-The Firecrest Programming Language. A production ready scripting language inspired by Wren.
+# Firecrest 🔥
+
+💠 As powerful as Go, as Slick as Wren 💠
