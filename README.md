@@ -1,3 +1,3 @@
 # Firecrest 🔥
 
-💠 As powerful as Go, as Slick as Wren 💠
+💠 As Powerful as Go, as Slick as Wren 💠
