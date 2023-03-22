@@ -1,0 +1,61 @@
+--------Near Term Scope----------
+
+var a = 5
+
+var b = 6
+
+var c = 'string one'
+
+var d = 'string two'
+
+var e = true
+
+func add(numOne, numTwo) [
+  var sum = numOne + numTwo
+  print(sum)
+]
+
+func concatentate(stringOne, stringTwo) [
+  print(stringOne stringTwo)
+]
+
+var f = func trueOrFalse(booleanValue) [
+  return true
+]
+
+add(5, 6)
+
+concatentate(cat, dog)
+
+trueOrFalse(e)
+
+
+
+-----Future------
+
+// This is a comment. No multiline comments
+
+
+class Greeting [
+
+  var greeting = 'Hello!'
+
+  func new(greeting) [
+    this.greeting = greeting
+  ]
+
+  func hello(name) [
+
+    if (name == null) [
+
+      print('Hello world!')
+
+    ] else [
+
+      print('Hello' name '!')
+
+    ]
+
+  ]
+
+]

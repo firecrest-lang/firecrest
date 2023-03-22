@@ -4,13 +4,15 @@
 
 ## What ❔
 
-⚙️ A modern C-like syntax inspired by the Wren programming language.
+⚙️ A modern programming language with a C-like syntax inspired by the Wren programming language.
 
-⚙️ Built with the ability to use the Node.js ecosystem.
+⚙️ Reduce visual noise, and make programming feel cleaner to read and easier to write.
 
-⚙️ "Designed to be familiar to people coming from C-like languages while being a bit simpler and more streamlined" - [Wren Syntax Page](https://wren.io/syntax.html). 
+⚙️ Meant to be a clean little scripting language, powered by a rich ecosystem.
 
-⚙️ Meant to be an easy language to learn and master for anyone wanting to get into programming!
+⚙️ Have a standard library small enough to learn in a day, but large enough to be used in production.
+
+⚙️ Be extensible, with the ability to implement your own Node.js functions as Fircrest functions.
 
 ## Implementation 🔨
 
