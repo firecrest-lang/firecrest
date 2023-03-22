@@ -2,7 +2,7 @@
 
 ***As Powerful as Node.js, as Slick as Wren***
 
-## What ❓
+## What ❔
 
 ⚙️ A modern C-like syntax inspired by the Wren programming language.
 
