@@ -10,13 +10,13 @@ var d = 'string two'
 
 var e = true
 
-func add(numOne, numTwo) [
-  var sum = numOne + numTwo
+func addition(numOne, numTwo) [
+  var sum = add(numOne, numTwo)
   print(sum)
 ]
 
 func concatentate(stringOne, stringTwo) [
-  print(stringOne stringTwo)
+  print(stringOne, stringTwo)
 ]
 
 var f = func trueOrFalse(booleanValue) [
@@ -40,8 +40,8 @@ class Greeting [
 
   var greeting = 'Hello!'
 
-  func new(greeting) [
-    this.greeting = greeting
+  func new(greet) [
+    this.greeting = greet
   ]
 
   func hello(name) [
