@@ -1,13 +1,21 @@
 # Firecrest 🔥
 
-***As Powerful as Go, as Slick as Wren***
+***As Powerful as Node.js, as Slick as Wren***
 
 ## What ❓
 
-⚙️ A domain specific language that resembles the Wren programming language for the Go programming language.
+⚙️ A modern C-like syntax inspired by the Wren programming language.
 
-⚙️ Small, fast, classed-based, concurrent, and production ready.
+⚙️ Built with the ability to use the Node.js ecosystem.
 
-⚙️ "Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax."
+⚙️ "Designed to be familiar to people coming from C-like languages while being a bit simpler and more streamlined" - [Wren Syntax Page](https://wren.io/syntax.html). 
 
-⚙️ Meant to be an easy language to learn and master for anyone wanting to get into programming, with access to the underlying Go ecosystem when needed!
+⚙️ Meant to be an easy language to learn and master for anyone wanting to get into programming!
+
+## Implementation 🔨
+
+⚙️ Lexing - [moo.js](https://github.com/no-context/moo)
+
+⚙️ Parsing - [nearley.js](https://github.com/kach/nearley)
+
+⚙️ Interpreting - [interpreter.js](https://github.com/firecrest-lang/firecrest/blob/main/interpreter.js)

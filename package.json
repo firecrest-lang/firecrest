@@ -1,0 +1,24 @@
+{
+  "name": "firecrest",
+  "version": "1.0.0",
+  "description": "***As Powerful as Node.js, as Slick as Wren***",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firecrest-lang/firecrest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/firecrest-lang/firecrest/issues"
+  },
+  "homepage": "https://github.com/firecrest-lang/firecrest#readme",
+  "devDependencies": {
+    "moo": "^0.5.2",
+    "nearley": "^2.20.1"
+  }
+}
