@@ -1,14 +1,16 @@
-import moo from 'moo'
+const moo = require("moo")
 
 module.exports = moo.compile({
     whitespace:      /[ \t]+/,
     number:          { match: /0|[1-9][0-9]*/, value: Number },
-    string:          /"(?:\\["\\]|[^\n"\\])*"/,
+    string:          { match: /'(?:\\["\\]|[^\n"\\])*'/, value: String },
+    boolean:         { match: /^(?:true|false)$/, value: Boolean},
     left_bracket:    '[',
     right_bracket:   ']',
     left_paren:      '(',
     right_paren:     ')',
+    param_separator: ',',
     assignment_op:   "=",
     identifier:      /[a-zA-Z_][a-zA-Z0-9_]*/,
-    newline:         { match: /\n/, lineBreaks: true },
+    newline:         { match: /(?:\n|\r\n)/, lineBreaks: true },
 });

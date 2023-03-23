@@ -1,0 +1,7 @@
+var num = 6
+
+var str = 'hi'
+
+var bool = true
+
+var bool = false

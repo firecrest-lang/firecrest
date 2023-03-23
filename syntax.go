@@ -10,22 +10,20 @@ var d = 'string two'
 
 var e = true
 
-func addition(numOne, numTwo) [
-  var sum = add(numOne, numTwo)
+func addition(numOne numTwo) [
+  var sum = add(numOne numTwo)
   print(sum)
-]
-
-func concatentate(stringOne, stringTwo) [
-  print(stringOne, stringTwo)
 ]
 
 var f = func trueOrFalse(booleanValue) [
   return true
 ]
 
-add(5, 6)
+print(add(5 10))
 
-concatentate(cat, dog)
+print(stringOne stringTwo)
+
+add(5 6)
 
 trueOrFalse(e)
 
