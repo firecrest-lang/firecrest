@@ -63,27 +63,6 @@
         "line": 5,
         "col": 12
       }
-    },
-    {
-      "type": "assignment",
-      "var_name": {
-        "type": "identifier",
-        "value": "bool",
-        "text": "bool",
-        "offset": 56,
-        "lineBreaks": 0,
-        "line": 7,
-        "col": 5
-      },
-      "value": {
-        "type": "identifier",
-        "value": "false",
-        "text": "false",
-        "offset": 63,
-        "lineBreaks": 0,
-        "line": 7,
-        "col": 12
-      }
     }
   ]
 }

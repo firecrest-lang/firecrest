@@ -1,0 +1,47 @@
+{
+  "type": "program",
+  "body": [
+    {
+      "type": "assignment",
+      "var_name": {
+        "type": "identifier",
+        "value": "hello",
+        "text": "hello",
+        "offset": 4,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 5
+      },
+      "value": {
+        "type": "string",
+        "value": "'hello world👋 form the firecrest team!'",
+        "text": "'hello world👋 form the firecrest team!'",
+        "offset": 12,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 13
+      }
+    },
+    {
+      "type": "reassignment",
+      "var_name": {
+        "type": "identifier",
+        "value": "hello",
+        "text": "hello",
+        "offset": 56,
+        "lineBreaks": 0,
+        "line": 3,
+        "col": 1
+      },
+      "value": {
+        "type": "string",
+        "value": "'oh, hi!'",
+        "text": "'oh, hi!'",
+        "offset": 64,
+        "lineBreaks": 0,
+        "line": 3,
+        "col": 9
+      }
+    }
+  ]
+}

@@ -42,6 +42,7 @@ statements
 
 statement
     -> assignment           {% id %}
+    | reassignment           {% id %}
 
 
 
@@ -54,6 +55,17 @@ assignment -> "var" _ %identifier _ "=" _ expression
                 type: "assignment",
                 var_name: data[2],
                 value: data[6]
+            }
+        }
+    %}
+
+reassignment -> %identifier _ "=" _ expression
+    {%
+        (data) => {
+            return {
+                type: "reassignment",
+                var_name: data[0],
+                value: data[4]
             }
         }
     %}

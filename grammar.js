@@ -27,12 +27,22 @@ var grammar = {
         (data) => [data[1], ...data[4]]
                 },
     {"name": "statement", "symbols": ["assignment"], "postprocess": id},
+    {"name": "statement", "symbols": ["reassignment"], "postprocess": id},
     {"name": "assignment", "symbols": [{"literal":"var"}, "_", (l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"="}, "_", "expression"], "postprocess": 
         (data) => {
             return {
                 type: "assignment",
                 var_name: data[2],
                 value: data[6]
+            }
+        }
+            },
+    {"name": "reassignment", "symbols": [(l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"="}, "_", "expression"], "postprocess": 
+        (data) => {
+            return {
+                type: "reassignment",
+                var_name: data[0],
+                value: data[4]
             }
         }
             },
