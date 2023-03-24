@@ -4,7 +4,7 @@
 
 ## What ❔
 
-⚙️ A modern programming language with a C-like syntax inspired by the Wren programming language.
+⚙️ A modern programming language with a C-like syntax, inspired mainly by Wren but also JavaScript and Go.
 
 ⚙️ Reduce visual noise, and make programming feel cleaner to read and easier to write.
 
