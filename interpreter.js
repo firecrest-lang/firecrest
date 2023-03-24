@@ -37,6 +37,13 @@ function generate(node) {
         } else {
             throw new Error('this variable is missing initial declaration. please use var keyword to declare this variable.')
         }
+    } else if (node.type === "function_call") {
+        const sourceFunName = node.fun_name.value;
+        //const funName = sourceFunName === "if" ? "$if" : sourceFunName;
+        const funName = sourceFunName;
+        const params = node.parameters.map(generate)
+            .join(", ");
+        return `${funName}(${params})`;
     }else if (node.type === "identifier") {
         return node.value;
     } else if (node.type === "number") {

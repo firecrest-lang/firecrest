@@ -42,8 +42,23 @@ statements
 
 statement
     -> assignment           {% id %}
-    | reassignment           {% id %}
+    | reassignment          {% id %}
+    | function_call         {% id %}
 
+
+
+#___________FUNCTION_CALL___________#
+
+function_call -> %identifier _ "(" _ expression_list _ ")"
+    {%
+        (data) => {
+            return {
+                type: "function_call",
+                fun_name: data[0],
+                parameters: data[4]
+            }
+        }
+    %}
 
 
 #___________ASSIGNMENT___________#
@@ -59,6 +74,10 @@ assignment -> "var" _ %identifier _ "=" _ expression
         }
     %}
 
+
+
+#___________REASSIGNMENT___________#
+
 reassignment -> %identifier _ "=" _ expression
     {%
         (data) => {
@@ -71,8 +90,24 @@ reassignment -> %identifier _ "=" _ expression
     %}
 
 
+#___________EXPRESSION_LIST___________#
+
+expression_list
+    -> expression
+        {%
+            (data) => {
+                return [data[0]]
+            }
+        %}
+    |  expression __ expression_list
+        {%
+            (data) => {
+                return [data[0], ...data[2]]
+            }
+        %}
 
 #___________EXPRESSIONS___________#
+
 expression
     -> %identifier    {% id %}
     |  literal        {% id %}

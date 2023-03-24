@@ -28,6 +28,16 @@ var grammar = {
                 },
     {"name": "statement", "symbols": ["assignment"], "postprocess": id},
     {"name": "statement", "symbols": ["reassignment"], "postprocess": id},
+    {"name": "statement", "symbols": ["function_call"], "postprocess": id},
+    {"name": "function_call", "symbols": [(l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"("}, "_", "expression_list", "_", {"literal":")"}], "postprocess": 
+        (data) => {
+            return {
+                type: "function_call",
+                fun_name: data[0],
+                parameters: data[4]
+            }
+        }
+            },
     {"name": "assignment", "symbols": [{"literal":"var"}, "_", (l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"="}, "_", "expression"], "postprocess": 
         (data) => {
             return {
@@ -46,6 +56,16 @@ var grammar = {
             }
         }
             },
+    {"name": "expression_list", "symbols": ["expression"], "postprocess": 
+        (data) => {
+            return [data[0]]
+        }
+                },
+    {"name": "expression_list", "symbols": ["expression", "__", "expression_list"], "postprocess": 
+        (data) => {
+            return [data[0], ...data[2]]
+        }
+                },
     {"name": "expression", "symbols": [(l.has("identifier") ? {type: "identifier"} : identifier)], "postprocess": id},
     {"name": "expression", "symbols": ["literal"], "postprocess": id},
     {"name": "literal", "symbols": [(l.has("number") ? {type: "number"} : number)], "postprocess": id},
