@@ -29,12 +29,28 @@ var grammar = {
     {"name": "statement", "symbols": ["assignment"], "postprocess": id},
     {"name": "statement", "symbols": ["reassignment"], "postprocess": id},
     {"name": "statement", "symbols": ["function_call"], "postprocess": id},
+    {"name": "statement", "symbols": ["function_def"], "postprocess": id},
     {"name": "function_call", "symbols": [(l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"("}, "_", "expression_list", "_", {"literal":")"}], "postprocess": 
         (data) => {
             return {
                 type: "function_call",
                 fun_name: data[0],
                 parameters: data[4]
+            }
+        }
+            },
+    {"name": "function_def$ebnf$1", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "function_def$ebnf$1", "symbols": ["function_def$ebnf$1", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "function_def$ebnf$2", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "function_def$ebnf$2", "symbols": ["function_def$ebnf$2", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "function_def", "symbols": [{"literal":"func"}, "_", (l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"("}, "_", "expression_list", "_", {"literal":")"}, "_", {"literal":"["}, "_", "function_def$ebnf$1", "statements", "function_def$ebnf$2", "_", {"literal":"]"}], "postprocess": 
+        (data) => {
+            return {
+                type: "function_def",
+                fun_name: data[2],
+                parameters: data[6],
+                body: data [13],
+        
             }
         }
             },

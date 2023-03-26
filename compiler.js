@@ -29,7 +29,7 @@ function generate(node) {
         const value = generate(node.value);
         declaredVars.set(varName, true)
         return `var ${varName} = ${value}`;
-    } else if (node.type === "reassignment") { 
+    } else if (node.type === "reassignment") {
         const varName = node.var_name.value;
         const value = generate(node.value);
         if (declaredVars.get(varName)) {
@@ -44,7 +44,10 @@ function generate(node) {
         const params = node.parameters.map(generate)
             .join(", ");
         return `${funName}(${params})`;
-    }else if (node.type === "identifier") {
+    } else if (node.type === "function_def") {
+        const funName = node.fun_name.value;
+        return generateFunction(node.body, node.parameters, funName);
+    } else if (node.type === "identifier") {
         return node.value;
     } else if (node.type === "number") {
         return String(node.value);
@@ -53,6 +56,25 @@ function generate(node) {
     } else {
         throw new Error(`Unknown node type: ${node.type}`);
     }
+}
+
+function generateFunction(statements, parameters, name = "") {
+    const body = statements.map((statement, idx) => {
+        const js = generate(statement);
+        return js
+        // if (idx === statements.length - 1) {
+        //     return `return ${js}`;
+        // } else {
+        //     return js;
+        // }
+    }).join(";\n") + ";";
+    const indentedBody = indent(body);
+    const params = parameters.map(generate).join(", ");
+    return `function ${name}(${params}) {\n${indentedBody}\n}`;
+}
+
+function indent(string) {
+    return string.split("\n").map(line => "\t" + line).join("\n");
 }
 
 

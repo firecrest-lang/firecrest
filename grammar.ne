@@ -44,6 +44,7 @@ statement
     -> assignment           {% id %}
     | reassignment          {% id %}
     | function_call         {% id %}
+    | function_def          {% id %}
 
 
 
@@ -59,6 +60,26 @@ function_call -> %identifier _ "(" _ expression_list _ ")"
             }
         }
     %}
+
+
+
+#___________FUNCTION_CALL___________#
+
+function_def -> "func" _ %identifier _ "(" _ expression_list _ ")" _ "[" _  %newline:+ statements  %newline:+ _ "]"
+    {%
+        (data) => {
+            return {
+                type: "function_def",
+                fun_name: data[2],
+                parameters: data[6],
+                body: data [13],
+
+            }
+        }
+    %}
+
+
+
 
 
 #___________ASSIGNMENT___________#
