@@ -14,6 +14,44 @@
 
 ⚙️ Be extensible, with the ability to implement your own Node.js functions as Fircrest functions.
 
+## Simple Examples 💻
+
+Hello World (esque):
+```go
+
+func hello(name) [
+
+  print('Hello' name '!')
+
+]
+
+var name = 'Nick'
+
+hello(name)
+
+```
+
+Equal To:
+```go
+
+func isEqual(valueOne valueTwo) [
+
+  if ( valueOne == valueTwo) [
+
+    print('They are equal 🎉')
+
+  ] else [
+
+    print('They are not equal 😔')
+
+  ]
+
+]
+
+isEqual(true false)
+
+```
+
 ## Implementation 🔨
 
 ⚙️ Lexing - [moo.js](https://github.com/no-context/moo)
