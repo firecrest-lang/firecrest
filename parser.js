@@ -4,8 +4,8 @@ const fs = require("fs").promises;
 const path = require("path");
 
 async function main() {
-
-  const filename = process.argv[2];
+    
+    const filename = process.argv[2];
     if (!filename) {
         console.log("Please provide a file name.");
         return;
@@ -13,9 +13,9 @@ async function main() {
     const code = (await fs.readFile(filename)).toString();
     const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
 
-  parser.feed(code);
-  
-  const baseDir = path.dirname(filename);
+    parser.feed(code);
+
+    const baseDir = path.dirname(filename);
     if (parser.results.length > 1) {
         console.warn("The parse tree generates multiple results.");
         for (let i = 0; i < parser.results.length; i++) {

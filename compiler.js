@@ -47,6 +47,10 @@ function generate(node) {
     } else if (node.type === "function_def") {
         const funName = node.fun_name.value;
         return generateFunction(node.body, node.parameters, funName);
+    } else if (node.type === "conditional_ifelse") {
+        return generateIfElseConditional(node.comparison, node.if_body, node.else_body)
+    } else if (node.type === "conditional_if") {
+        return generateIfConditional(node.comparison, node.if_body)
     } else if (node.type === "identifier") {
         return node.value;
     } else if (node.type === "number") {
@@ -71,6 +75,29 @@ function generateFunction(statements, parameters, name = "") {
     const indentedBody = indent(body);
     const params = parameters.map(generate).join(", ");
     return `function ${name}(${params}) {\n${indentedBody}\n}`;
+}
+
+function generateIfElseConditional(comparison, ifBody, elseBody) {
+    const ifbody = ifBody.map((statement, idx) => {
+        const js = generate(statement);
+        return js
+    }).join(";\n") + ";";
+    const elsebody = elseBody.map((statement, idx) => {
+        const js = generate(statement);
+        return js
+    }).join(";\n") + ";";
+    const indentedIfBody = indent(ifbody);
+    const indentedElseBody = indent(elsebody);
+    return `if (${comparison.expr_one.value} ${comparison.comparison.value} ${comparison.expr_two.value}) {\n${indentedIfBody}\n} else {\n${indentedElseBody}\n}`;
+}
+
+function generateIfConditional(comparison, ifBody) {
+    const ifbody = ifBody.map((statement, idx) => {
+        const js = generate(statement);
+        return js
+    }).join(";\n") + ";";
+    const indentedIfBody = indent(ifbody);
+    return `if (${comparison.expr_one.value} ${comparison.comparison.value} ${comparison.expr_two.value}) {\n${indentedIfBody}\n}`;
 }
 
 function indent(string) {

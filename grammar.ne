@@ -45,6 +45,63 @@ statement
     | reassignment          {% id %}
     | function_call         {% id %}
     | function_def          {% id %}
+    | conditional           {% id %}
+
+
+
+#___________CONDITIONAL_CALL___________#
+
+conditional 
+    -> "if" _ "(" _ comparison _ ")" _ "[" _  %newline:+ statements  %newline:+ _ "]" _ "else" _ "[" _  %newline:+ statements  %newline:+ _ "]"
+        {%
+            (data) => {
+                return {
+                    type: "conditional_ifelse",
+                    comparison: data[4],
+                    if_body: data [11],
+                    else_body: data[21]
+                }
+            }
+        %}
+    | "if" _ "(" _ comparison _ ")" _ "[" _  %newline:+ statements  %newline:+ _ "]"
+        {%
+            (data) => {
+                return {
+                    type: "conditional_if",
+                    comparison: data[4],
+                    if_body: data [11],
+                }
+            }
+        %}
+
+
+
+#___________COMPARISON___________#
+
+comparison 
+    -> expression _ %equal_to _ expression
+        {%
+            (data) => {
+                return {
+                    type: "comparison",
+                    comparison: data[2],
+                    expr_one: data[0],
+                    expr_two: data[4]
+                }
+            }
+        %}
+
+    |  expression _ %not_equal_to _ expression
+        {%
+            (data) => {
+                return {
+                    type: "comparison",
+                    comparison: data[2],
+                    expr_one: data[0],
+                    expr_two: data[4]
+                }
+            }
+        %}
 
 
 

@@ -30,6 +30,58 @@ var grammar = {
     {"name": "statement", "symbols": ["reassignment"], "postprocess": id},
     {"name": "statement", "symbols": ["function_call"], "postprocess": id},
     {"name": "statement", "symbols": ["function_def"], "postprocess": id},
+    {"name": "statement", "symbols": ["conditional"], "postprocess": id},
+    {"name": "conditional$ebnf$1", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$1", "symbols": ["conditional$ebnf$1", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional$ebnf$2", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$2", "symbols": ["conditional$ebnf$2", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional$ebnf$3", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$3", "symbols": ["conditional$ebnf$3", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional$ebnf$4", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$4", "symbols": ["conditional$ebnf$4", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional", "symbols": [{"literal":"if"}, "_", {"literal":"("}, "_", "comparison", "_", {"literal":")"}, "_", {"literal":"["}, "_", "conditional$ebnf$1", "statements", "conditional$ebnf$2", "_", {"literal":"]"}, "_", {"literal":"else"}, "_", {"literal":"["}, "_", "conditional$ebnf$3", "statements", "conditional$ebnf$4", "_", {"literal":"]"}], "postprocess": 
+        (data) => {
+            return {
+                type: "conditional_ifelse",
+                comparison: data[4],
+                if_body: data [11],
+                else_body: data[21]
+            }
+        }
+                },
+    {"name": "conditional$ebnf$5", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$5", "symbols": ["conditional$ebnf$5", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional$ebnf$6", "symbols": [(l.has("newline") ? {type: "newline"} : newline)]},
+    {"name": "conditional$ebnf$6", "symbols": ["conditional$ebnf$6", (l.has("newline") ? {type: "newline"} : newline)], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "conditional", "symbols": [{"literal":"if"}, "_", {"literal":"("}, "_", "comparison", "_", {"literal":")"}, "_", {"literal":"["}, "_", "conditional$ebnf$5", "statements", "conditional$ebnf$6", "_", {"literal":"]"}], "postprocess": 
+        (data) => {
+            return {
+                type: "conditional_if",
+                comparison: data[4],
+                if_body: data [11],
+            }
+        }
+                },
+    {"name": "comparison", "symbols": ["expression", "_", (l.has("equal_to") ? {type: "equal_to"} : equal_to), "_", "expression"], "postprocess": 
+        (data) => {
+            return {
+                type: "comparison",
+                comparison: data[2],
+                expr_one: data[0],
+                expr_two: data[4]
+            }
+        }
+                },
+    {"name": "comparison", "symbols": ["expression", "_", (l.has("not_equal_to") ? {type: "not_equal_to"} : not_equal_to), "_", "expression"], "postprocess": 
+        (data) => {
+            return {
+                type: "comparison",
+                comparison: data[2],
+                expr_one: data[0],
+                expr_two: data[4]
+            }
+        }
+                },
     {"name": "function_call", "symbols": [(l.has("identifier") ? {type: "identifier"} : identifier), "_", {"literal":"("}, "_", "expression_list", "_", {"literal":")"}], "postprocess": 
         (data) => {
             return {

@@ -1,0 +1,188 @@
+{
+  "type": "program",
+  "body": [
+    {
+      "type": "conditional_if",
+      "comparison": {
+        "type": "comparison",
+        "comparison": {
+          "type": "equal_to",
+          "value": "==",
+          "text": "==",
+          "offset": 6,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 7
+        },
+        "expr_one": {
+          "type": "number",
+          "value": 1,
+          "text": "1",
+          "offset": 4,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 5
+        },
+        "expr_two": {
+          "type": "number",
+          "value": 1,
+          "text": "1",
+          "offset": 9,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 10
+        }
+      },
+      "if_body": [
+        {
+          "type": "function_call",
+          "fun_name": {
+            "type": "identifier",
+            "value": "print",
+            "text": "print",
+            "offset": 17,
+            "lineBreaks": 0,
+            "line": 2,
+            "col": 3
+          },
+          "parameters": [
+            {
+              "type": "identifier",
+              "value": "true",
+              "text": "true",
+              "offset": 23,
+              "lineBreaks": 0,
+              "line": 2,
+              "col": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "assignment",
+      "var_name": {
+        "type": "identifier",
+        "value": "t",
+        "text": "t",
+        "offset": 39,
+        "lineBreaks": 0,
+        "line": 5,
+        "col": 5
+      },
+      "value": {
+        "type": "identifier",
+        "value": "true",
+        "text": "true",
+        "offset": 43,
+        "lineBreaks": 0,
+        "line": 5,
+        "col": 9
+      }
+    },
+    {
+      "type": "assignment",
+      "var_name": {
+        "type": "identifier",
+        "value": "tt",
+        "text": "tt",
+        "offset": 55,
+        "lineBreaks": 0,
+        "line": 7,
+        "col": 5
+      },
+      "value": {
+        "type": "identifier",
+        "value": "false",
+        "text": "false",
+        "offset": 60,
+        "lineBreaks": 0,
+        "line": 7,
+        "col": 10
+      }
+    },
+    {
+      "type": "conditional_ifelse",
+      "comparison": {
+        "type": "comparison",
+        "comparison": {
+          "type": "equal_to",
+          "value": "==",
+          "text": "==",
+          "offset": 75,
+          "lineBreaks": 0,
+          "line": 9,
+          "col": 7
+        },
+        "expr_one": {
+          "type": "identifier",
+          "value": "t",
+          "text": "t",
+          "offset": 73,
+          "lineBreaks": 0,
+          "line": 9,
+          "col": 5
+        },
+        "expr_two": {
+          "type": "identifier",
+          "value": "tt",
+          "text": "tt",
+          "offset": 78,
+          "lineBreaks": 0,
+          "line": 9,
+          "col": 10
+        }
+      },
+      "if_body": [
+        {
+          "type": "function_call",
+          "fun_name": {
+            "type": "identifier",
+            "value": "print",
+            "text": "print",
+            "offset": 89,
+            "lineBreaks": 0,
+            "line": 11,
+            "col": 3
+          },
+          "parameters": [
+            {
+              "type": "identifier",
+              "value": "true",
+              "text": "true",
+              "offset": 95,
+              "lineBreaks": 0,
+              "line": 11,
+              "col": 9
+            }
+          ]
+        }
+      ],
+      "else_body": [
+        {
+          "type": "function_call",
+          "fun_name": {
+            "type": "identifier",
+            "value": "print",
+            "text": "print",
+            "offset": 118,
+            "lineBreaks": 0,
+            "line": 15,
+            "col": 3
+          },
+          "parameters": [
+            {
+              "type": "identifier",
+              "value": "false",
+              "text": "false",
+              "offset": 124,
+              "lineBreaks": 0,
+              "line": 15,
+              "col": 9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

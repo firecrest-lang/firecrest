@@ -10,7 +10,9 @@ module.exports = moo.compile({
     left_paren:      '(',
     right_paren:     ')',
     param_separator: ',',
-    assignment_op:   "=",
+    assignment_op:   { match: /(?<![!=])\=(?!=)/},
+    equal_to:        { match: /(?<!\=)\=\=(?!=)/},
+    not_equal_to:    { match: /\!=/},
     identifier:      /[a-zA-Z_][a-zA-Z0-9_]*/,
     newline:         { match: /(?:\n|\r\n)/, lineBreaks: true },
 });
